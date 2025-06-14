@@ -9,6 +9,7 @@ class User(Base):
     nome = Column(String(100))
     email = Column(String(100), unique=True)
     idade = Column(Integer)
+    senha = Column(String(255))
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

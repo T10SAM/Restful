@@ -5,7 +5,7 @@ from core import config
 
 logger = logging.getLogger(__name__)
 
-database_url = f"mysql+mysqlconnector://root:R02165rr.@127.0.0.1/gestao"
+database_url = f"mysql+mysqlconnector://{config.DB_USER}:{config.DB_PASSWORD}@{config.DB_HOST}/{config.DB_NAME}"
 engine = create_engine(database_url)
 
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)

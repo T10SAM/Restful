@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
-from controller import user_controller, task_controller
+from controller import user_controller, task_controller, auth_controller
 from core.database import Base, engine
 from core.logging_config import logger
 import logging
@@ -19,6 +19,7 @@ app = FastAPI(
 # Registrar os routers
 app.include_router(user_controller.router)
 app.include_router(task_controller.router)
+app.include_router(auth_controller.router)
 
 #Registro de logs no terminal
 logging.basicConfig(

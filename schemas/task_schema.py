@@ -24,5 +24,5 @@ class TaskResponse(TaskBase):
     created_at: datetime
     updated_at: datetime
 
-    class Config: #Diz ao Pydantic para aceitar objetos ORM, permitindo retornar instâncias da Task diretamente nas rotas sem convertê-las manualmente.
-        orm_mode = True
+    class Config:
+        from_attributes = True

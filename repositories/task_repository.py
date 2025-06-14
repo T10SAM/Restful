@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from sqlalchemy.orm import Session
 from models.tasks import Task
 from schemas.task_schema import  TaskCreate, TaskUpdate
@@ -11,9 +11,14 @@ def create_task(db: Session, task: TaskCreate) -> Task:
     db.refresh(db_task)
     return db_task
 
-#Buscar todas as tasks
-def get_all_tasks(db: Session) -> List[Task]:
-    return db.query(Task).all()
+#Buscar todas as tasks com filtros opcionais
+def get_all_tasks(db: Session, status: Optional[str] = None, due_before: Optional[datetime] = None) -> List[Task]:
+    query = db.query(Task)
+    if status:
+        query = query.filter(Task.task_status == status)
+    if due_before:
+        query = query.filter(Task.prazo < due_before)
+    return query.all()
 
 #Buscar uma task pelo id
 def get_task_by_id(db: Session, task_id: int) -> Task | None:

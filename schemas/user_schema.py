@@ -8,7 +8,7 @@ class UserBase(BaseModel):
     idade: int
 
 class UserCreate(UserBase):
-    pass
+    senha: str
 
 class UserUpdate(BaseModel):
     nome: Optional[str] = None
@@ -20,5 +20,5 @@ class UserResponse(UserBase):
     created_at: datetime
     updated_at: datetime
 
-    class Config: #Permite que o Pydantic leia dados diretamente de objetos ORM.
-        orm_mode = True
+    class Config:
+        from_attributes = True
