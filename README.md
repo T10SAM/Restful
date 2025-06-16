@@ -28,7 +28,7 @@ API desenvolvida com FastAPI, SQLAlchemy e MySQL para gestão de tarefas colabor
    ```
 
 ## Configuração
-1. Renomeie o arquivo `core/.env` e configure as variáveis de ambiente:
+1. No arquivo `core/.env`, configure as variáveis de ambiente:
    ```env
    DB_USER=seu_usuario
    DB_PASSWORD=sua_senha
